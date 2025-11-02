@@ -1,0 +1,82 @@
+/* -------------------------------------------------
+   CATEGORY SLIDER – Icon Cards (Bootstrap Icons)
+   ------------------------------------------------- */
+.category-slider {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 3rem 0;
+}
+
+.category-slider h3 {
+  font-weight: 700;
+  color: #2d3748;
+}
+
+/* Card Hover Lift */
+.category-card {
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.category-card:hover {
+  transform: translateY(-10px);
+  text-decoration: none;
+}
+
+.category-card-item {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  border: 1px solid #e2e8f0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.category-card:hover .category-card-item {
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+  border-color: #667eea;
+}
+
+/* Icon Wrapper */
+.category-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.category-card:hover .category-icon-wrapper {
+  transform: scale(1.12);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.35);
+}
+
+/* Icon */
+.category-icon {
+  font-size: 2rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+.category-card:hover .category-icon {
+  transform: scale(1.1);
+}
+
+/* Title */
+.card-title {
+  font-size: 0.95rem;
+  color: #4a5568;
+  transition: color 0.3s ease;
+  margin-top: 0.5rem;
+}
+.category-card:hover .card-title {
+  color: #667eea;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .category-icon-wrapper { width: 70px; height: 70px; }
+  .category-icon { font-size: 1.8rem; }
+  .card-title { font-size: 0.9rem; }
+}

@@ -1,0 +1,20 @@
+/* Add specific styles if needed */
+
+.product-card {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15) !important;
+}
+
+.product-card:hover img {
+  transform: scale(1.08);
+}
+
+.card-img-top {
+  transition: transform 0.4s ease;
+}

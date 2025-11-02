@@ -1,0 +1,111 @@
+<bajaj-nav-bar></bajaj-nav-bar>
+
+<div class="container py-5">
+  <div class="d-flex align-items-center mb-4">
+    <a routerLink="/orders" class="btn btn-link text-decoration-none">
+      ← Back to Orders
+    </a>
+    <h2 class="mb-0 ms-3">Order Details</h2>
+  </div>
+
+  @if (isLoading) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  } @else if (order) {
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Order Items</h5>
+          </div>
+          <div class="card-body">
+            @for (item of order.items; track trackByItem($index, item)) {
+              <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+                <img 
+                  [src]="item.image || 'https://via.placeholder.com/80'" 
+                  class="rounded me-3" 
+                  width="80" height="80" 
+                  style="object-fit: cover;">
+                <div class="flex-grow-1">
+                  <h6 class="mb-1">{{ item.name }}</h6>
+                  <p class="text-muted mb-0 small">
+                    Quantity: {{ item.quantity }} × ₹{{ item.price | number:'1.0-0' }}
+                  </p>
+                </div>
+                <strong>₹{{ (item.price * item.quantity) | number:'1.0-0' }}</strong>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="card shadow-sm">
+          <div class="card-header bg-light">
+            <h5 class="mb-0">Shipping Address</h5>
+          </div>
+          <div class="card-body">
+            @if (order.shippingAddress) {
+              <p class="mb-1"><strong>{{ order.shippingAddress.fullName }}</strong></p>
+              <p class="mb-1">{{ order.shippingAddress.address }}</p>
+              <p class="mb-1">{{ order.shippingAddress.city }}, {{ order.shippingAddress.state }}</p>
+              <p class="mb-0">{{ order.shippingAddress.pincode }}, {{ order.shippingAddress.country }}</p>
+              <p class="mt-2 mb-0"><strong>Phone:</strong> {{ order.shippingAddress.phone }}</p>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card shadow-sm sticky-top" style="top: 1rem;">
+          <div class="card-body">
+            <h5>Order Summary</h5>
+            <hr>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Subtotal:</span>
+              <span>₹{{ (order.subtotal || 0) | number:'1.0-0' }}</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Shipping:</span>
+              <span>₹{{ (order.shipping || 0) | number:'1.0-0' }}</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span>Tax:</span>
+              <span>₹{{ (order.tax || 0) | number:'1.0-0' }}</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between mb-3">
+              <strong>Total Paid:</strong>
+              <strong class="text-success">₹{{ (order.total || 0) | number:'1.0-0' }}</strong>
+            </div>
+
+            <div class="mb-3">
+              <strong>Payment:</strong>
+              <span class="ms-2">{{ order.paymentMethod || 'COD' }}</span>
+            </div>
+
+            <div class="mb-3">
+              <strong>Status:</strong>
+              <span [class]="getStatusClass(order.status)" class="ms-2">
+                {{ order.status }}
+              </span>
+            </div>
+
+            <div class="text-muted small">
+              <strong>Order Date:</strong> {{ order.createdAt | date:'medium' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="alert alert-danger text-center">
+      <h4>Order Not Found</h4>
+      <p>The order you're looking for does not exist or there was a server error.</p>
+      <a routerLink="/orders" class="btn btn-primary">Back to Orders</a>
+    </div>
+  }
+</div>
+
+<bajaj-footer></bajaj-footer>

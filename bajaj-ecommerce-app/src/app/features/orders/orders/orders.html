@@ -1,0 +1,31 @@
+<!-- src/app/features/orders/orders.html -->
+<div class="container py-5">
+  <h2 class="mb-4 text-center">My Orders</h2>
+
+  <div *ngIf="isLoading" class="text-center py-4">
+    <div class="spinner-border text-primary"></div>
+  </div>
+
+  <div *ngIf="!isLoading && orders.length === 0" class="alert alert-info text-center">
+    You haven't placed any orders yet.
+  </div>
+
+  <div *ngIf="!isLoading && orders.length > 0" class="row">
+    @for (order of orders; track order.id || order._id || $index) {
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Order #{{ order.id || order._id }}</h5>
+            <p class="card-text">
+              <strong>Date:</strong> {{ order.createdAt | date:'medium' }} <br />
+              <strong>Total:</strong> ₹{{ order.totalAmount }}
+            </p>
+            <a [routerLink]="['/orders', order.id || order._id]" class="btn btn-outline-primary btn-sm">
+              View Details
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

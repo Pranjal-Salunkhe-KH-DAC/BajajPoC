@@ -1,0 +1,44 @@
+<div id="banner-carousel" class="carousel slide banner-carousel carousel-fade" data-bs-ride="carousel">
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    @for (slide of slides; track $index) {
+      <button 
+        type="button"
+        [attr.data-bs-target]="'#banner-carousel'"
+        [attr.data-bs-slide-to]="$index"
+        [class.active]="$index === 0"
+        [attr.aria-current]="$index === 0 ? 'true' : null">
+      </button>
+    }
+  </div>
+
+  <!-- Slides -->
+  <div class="carousel-inner">
+    @for (slide of slides; track $index) {
+      <div class="carousel-item" [class.active]="$index === 0">
+        <img [src]="slide.image" class="d-block w-100 banner-image" [alt]="slide.title">
+        
+        <div class="carousel-caption">
+          <div class="caption-content">
+            <h2 class="display-4 fw-bold">{{ slide.title }}</h2>
+            <h4 class="text-warning mb-3">{{ slide.subtitle }}</h4>
+            <p class="lead mb-4">{{ slide.description }}</p>
+            <a [routerLink]="slide.link" class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-lg">
+              Shop Now
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Arrow Controls (Bootstrap handles sliding) -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#banner-carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#banner-carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

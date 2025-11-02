@@ -1,0 +1,17 @@
+.cart-item img {
+  border-radius: 8px;
+}
+
+.cart-item input {
+  width: 60px;
+}
+
+@media (max-width: 768px) {
+  .cart-item .col-3,
+  .cart-item .col-9 {
+    width: 100%;
+  }
+  .cart-item .text-end {
+    text-align: left !important;
+  }
+}

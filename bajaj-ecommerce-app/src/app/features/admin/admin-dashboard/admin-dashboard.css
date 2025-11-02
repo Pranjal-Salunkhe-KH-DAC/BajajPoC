@@ -1,0 +1,15 @@
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card.bg-primary,
+.card.bg-success,
+.card.bg-info,
+.card.bg-warning {
+  border: none;
+}
+

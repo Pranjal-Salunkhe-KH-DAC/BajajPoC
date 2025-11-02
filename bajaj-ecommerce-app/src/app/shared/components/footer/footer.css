@@ -1,0 +1,67 @@
+/* -------------------------------------------------
+   FOOTER – Modern Gradient + Glassmorphism
+   ------------------------------------------------- */
+.footer-modern {
+  background: linear-gradient(135deg, #001233 0%, #00205b 100%);
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-modern h4,
+.footer-modern h6 {
+  color: #fff;
+}
+
+.footer-links a {
+  color: #b0c4de;
+  text-decoration: none;
+  display: block;
+  padding: 0.4rem 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.footer-links a:hover {
+  color: #ff6b35;
+  padding-left: 0.5rem;
+}
+.footer-links a::before {
+  content: '→';
+  position: absolute;
+  left: -1rem;
+  opacity: 0;
+  transition: 0.3s;
+}
+.footer-links a:hover::before {
+  opacity: 1;
+  left: -0.5rem;
+}
+
+/* Social Icons */
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+.social-icon {
+  width: 40px; height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+.social-icon:hover {
+  background: #ff6b35;
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 8px 16px rgba(255, 107, 53, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-modern { font-size: 0.9rem; }
+  .social-links { justify-content: center; }
+}

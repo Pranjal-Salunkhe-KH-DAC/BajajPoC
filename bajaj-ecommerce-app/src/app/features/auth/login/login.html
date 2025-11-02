@@ -1,0 +1,64 @@
+<!-- src/app/features/auth/login/login.html -->
+<bajaj-nav-bar></bajaj-nav-bar>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4">Login to Bajaj Store</h2>
+          
+          @if (errorMessage) {
+            <div class="alert alert-danger">{{ errorMessage }}</div>
+          }
+
+          <form (ngSubmit)="onLogin()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                name="email"
+                [(ngModel)]="loginData.email"
+                placeholder="Enter your email"
+                required>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                name="password"
+                [(ngModel)]="loginData.password"
+                placeholder="Enter your password"
+                required>
+            </div>
+
+            <button 
+              type="submit" 
+              class="btn btn-primary w-100 py-2"
+              [disabled]="isLoading">
+              @if (isLoading) {
+                <span class="spinner-border spinner-border-sm me-2"></span>
+                Logging in...
+              } @else {
+                Login
+              }
+            </button>
+          </form>
+
+          <div class="text-center mt-3">
+            <p class="mb-0">Don't have an account? 
+              <a routerLink="/register" class="text-primary fw-bold">Register here</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<bajaj-footer></bajaj-footer>
